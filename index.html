@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+    <!-- Replace the content tag with appropriate information -->
+    <meta name="description" content="Wan-S2V">
+    <meta property="og:title" content="Wan-S2V"/>
+    <meta property="og:description"
+          content="Wan-S2V: Audio-Driven Cinematic Video Generation"/>
+    <meta property="og:url" content="URL OF THE WEBSITE"/>
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+    <meta property="og:image" content="content/v3/superman.png"/>
+    <meta property="og:image:width" content="2412"/>
+    <meta property="og:image:height" content="1394"/>
+
+
+    <meta name="twitter:title" content="Wan-S2V">
+    <meta name="twitter:description"
+          content="Wan-S2V: Audio-Driven Cinematic Video Generation">
+          
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+    <meta name="twitter:image" content="content/v3/superman.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Keywords for your paper to be indexed by-->
+    <meta name="keywords" content="Image-to-Video">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Wan-S2V</title>
+    <link rel="icon" type="image/x-icon" href="content/v3/superman.png">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+<!-- 页面进度条 -->
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <a class="navbar-item" href=https://github.com/HumanAIGC>
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More Research
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="https://humanaigc.github.io/animate-anyone-2/">
+                        AnimateAnyone 2
+                    </a>
+                    <a class="navbar-item" href="https://humanaigc.github.io/emote-portrait-alive-2/">
+                        EMO 2
+                    </a>
+                    <a class="navbar-item" href="https://humanaigc.github.io/SwapAnyHead/">
+                        SwapAnyHead
+                    </a>
+                    <a class="navbar-item" href="https://humanaigc.github.io/chat-anyone/">
+                        ChatAnyone
+                    </a>
+                    <a class="navbar-item" href="https://humanaigc.github.io/omnitalker/">
+                        OmniTalker
+                    </a>
+                    <a class="navbar-item" href="https://humanaigc.github.io/emote-portrait-alive/">
+                        EMO
+                    </a>
+                    <a class="navbar-item" href="https://humanaigc.github.io/animate-anyone/">
+                        AnimateAnyone
+                    </a>
+                    <a class="navbar-item" href="https://humanaigc.github.io/outfit-anyone/">
+                        OutfitAnyone
+                    </a>
+                    <a class="navbar-item" href="https://github.com/HumanAIGC/MaTe3D/">
+                        MaTe3D
+                    </a>
+                    <a class="navbar-item" href="https://humanaigc.github.io/vivid-talk/">
+                        VividTalk
+                    </a>
+                    <a class="navbar-item" href="https://tomguluson92.github.io/projects/cloth2tex/">
+                        Cloth2Tex
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+
+                    <h1 class="title is-1 publication-title scroll-animate">Wan-S2V: Audio-Driven Cinematic Video Generation</h1>
+                    <!-- <div class="is-size-5 publication-authors scroll-animate"> -->
+                        <!-- Paper authors -->
+                        <!-- <span class="author-block"> -->
+                <!-- <a href="" target="_blank">Linrui Tian</a>,</span>
+                        <span class="author-block">
+                <a href="" target="_blank">Siqi Hu</a>,</span>
+                        <span class="author-block">
+                  <a href="" target="_blank">Qi Wang</a>,</span> -->
+                        <!-- <span class="author-block">
+                      <a href="https://dblp.org/pid/11/4046.html" target="_blank">Bang Zhang</a>,</span>
+                        <span class="author-block">
+                          <a href="https://scholar.google.com/citations?user=FJwtMf0AAAAJ&hl=zh-CN" target="_blank">Liefeng Bo</a>
+                  </span> -->
+                    <!-- </div> -->
+                    <div class="is-size-5 publication-authors scroll-animate">
+                        <span class="author-block">Tongyi Lab, Alibaba <img id="affiliation-logo" src="./content/pic/wan_logo.png" alt="Logo" style="max-height: 23px; height: auto; width: auto; vertical-align: middle;"></span>
+                        
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links scroll-animate">
+                            <span class="link-block">
+                                <a href="" target="_blank"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="ai ai-arxiv"></i>
+                                    </span>
+                                    <span>Paper(Coming Soon)</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://github.com/Wan-Video/Wan2.2" target="_blank"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>GitHub</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://huggingface.co/models/Wan-AI/Wan2.2-S2V-14B" target="_blank"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        🤗
+                                    </span>
+                                    <span>HF Model</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://www.modelscope.cn/models/Wan-AI/Wan2.2-S2V-14B" target="_blank"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        🤖
+                                    </span>
+                                    <span>MS Model</span>
+                                </a>
+                            </span>
+                        </div>
+                        <div class="publication-links scroll-animate">
+                            <span class="link-block">
+                                <a href="https://huggingface.co/spaces/Wan-AI/Wan2.2-S2V" target="_blank"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        🤗
+                                    </span>
+                                    <span>HF Space</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://www.modelscope.cn/studios/Wan-AI/Wan2.2-S2V" target="_blank"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        🤖
+                                    </span>
+                                    <span>MS Studio</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Abstract -->
+<section class="section hero is-light">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3 scroll-animate">Abstract</h2>
+                <div class="content has-text-justified scroll-animate">
+                    <div class="highlight-box">
+                        <p style="font-size: 1.2em; margin: 0;">
+                            Wan-S2V is an AI video generation model that can transform static images and audio into high-quality videos. Our model excels in film and television application scenarios, capable of presenting realistic visual effects, including generating natural facial expressions, body movements, and professional camera work. It supports both full-body and half-body character generation, and can high-quality complete various professional-level content creation needs such as dialogue, singing, and performance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Teaser video-->
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Image + Audio = Video Generation Demo -->
+        <div class="columns is-multiline is-centered" style="margin-top: 40px;">
+            <div class="column has-text-centered">
+                <h3 class="title is-4 scroll-animate" style="margin-bottom: 30px;">Image + Audio = Video Generation</h3>
+                
+                <div class="columns is-centered is-vcentered">
+                    <!-- Input Image -->
+                    <div class="column is-4 has-text-centered">
+                        <div class="box" style="padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                            <h4 class="title is-5" style="color: white; margin-bottom: 20px;">Input Image</h4>
+                            <img src="content/v3/Everybody Wants To Rule the World.png" alt="Superman Image" style="width: 100%; max-width: 450px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);"/>
+                        </div>
+                    </div>
+                    
+                    <!-- Plus Sign -->
+                    <div class="column is-1 has-text-centered">
+                        <div style="font-size: 4rem; font-weight: bold; color: #4a4a4a; margin-top: 30px;">+</div>
+                    </div>
+                    
+                    <!-- Input Audio -->
+                    <div class="column is-4 has-text-centered">
+                        <div class="box" style="padding: 30px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+                            <h4 class="title is-5" style="color: white; margin-bottom: 20px;">Input Audio</h4>
+                            <audio controls style="width: 100%; max-width: 450px; height: 60px;">
+                                <source src="content/v3/audio/Everybody Wants To Rule the World.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <p style="font-size: 1rem; margin-top: 15px; color: white;">Superman speaking audio</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Equals Sign -->
+                    <div class="column is-1 has-text-centered">
+                        <div style="font-size: 4rem; font-weight: bold; color: #4a4a4a; margin-top: 30px;">=</div>
+                    </div>
+                    
+                    <!-- Generated Video -->
+                    <div class="column is-4 has-text-centered">
+                        <div class="box" style="padding: 30px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
+                            <h4 class="title is-5" style="color: white; margin-bottom: 20px;">Generated Video</h4>
+                            <video controls style="width: 100%; max-width: 450px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+                                <source src="content/v3/video/banquan/[good]Everybody Wants To Rule the World_Everybody Wants To Rule the World_27250_cfg_4.5_shift_3.mp4" type="video/mp4">
+                                Your browser does not support the video element.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content has-text-centered" style="margin-top: 20px;">
+                    <p style="font-size: 1.1em; color: #666;">
+                        <strong>Wan-S2V</strong> takes a single image and audio input to generate high-quality, synchronized video content
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- <div class="columns is-multiline is-centered">
+
+            <div class="column">
+                <video class="video-player" poster="" id="tree2" controls>
+                    <source src="content/v3/video/superman_right_half.mp4" type="video/mp4">
+                </video>
+                <p class="caption">
+                    Prompt: "In the video, Superman stands on the coast, angrily accusing the other person. He sometimes extends his arms, sometimes points his hand at the other person with a finger, and sometimes points to his own head. The camera shakes, and flames burn in the distance, as if it were a scene from a movie."
+                </p>
+            </div>
+        </div> -->
+
+        <div class="columns is-multiline is-centered">
+
+            <div class="column">
+                <video class="video-player" poster="" id="tree2" controls>
+                    <source src="content/v3/video/banquan/[good]Five Hundred Miles_Five Hundred Miles_27250_.mp4" type="video/mp4">
+                </video>
+                <p class="caption">
+                    Prompt: "In the video, a man is walking beside the railway tracks, singing and expressing his emotions while walking. A train slowly passes by beside him."
+                </p>
+            </div>
+        </div>
+
+        <div class="columns is-multiline is-centered">
+            <div class="column">
+                <video class="video-player" poster="" id="tree2" controls>
+                    <source src="content/v3/video/1-moive_talk.mp4" type="video/mp4">
+                </video>
+                <p class="caption">
+                    Prompt: "In the video, a woman is talking to the man in front of her. She looks sad, thoughtful and about to cry."
+                </p>
+            </div>
+        </div>
+
+        <div class="columns is-multiline is-centered">
+
+            <div class="column is-half">
+                <video class="video-player" poster="" id="tree2" controls>
+                    <source src="content/v3/video/banquan/11.mp4" type="video/mp4">
+                </video>
+                <p class="caption">
+                    Prompt: "In the video, a woman is singing. Her expression is very lyrical and intoxicated with music."
+                </p>
+            </div>
+
+            <div class="column is-half">
+                <video class="video-player" poster="" id="tree2" controls>
+                    <source src="content/v3/video/banquan/别让爱掉落.mp4" type="video/mp4">
+                </video>
+                <p class="caption">
+                    Prompt: "The video shows a woman with long hair playing the piano at the seaside. 
+                    The woman has a long head of silver white hair, 
+                    and a <span style="color: rgb(255, 215, 0); font-weight: bold;">flame crown</span> is burning on her head. 
+                    The girls are singing with deep feelings, and their facial expressions are rich. 
+                    The woman sat sideways in front of the piano, playing attentively."
+                </p>
+            </div>
+        </div>
+
+        <div class="columns is-multiline is-centered">
+
+            <div class="column is-half">
+                <video class="video-player" poster="" id="tree2" controls>
+                    <source src="content/v3/video/banquan/9-rick-Einstein_9-rick-Einstein_15250_cfg_5.0_shif.mp4" type="video/mp4">
+                </video>
+                <p class="caption">
+                    Prompt: "In the video, Einstein is educating students outside the camera."
+                </p>
+            </div>
+
+            <div class="column is-half">
+                <video class="video-player" poster="" id="tree2" controls>
+                    <source src="content/v3/video/banquan/22.mp4" type="video/mp4">
+                </video>
+                <p class="caption">
+                    Prompt: "In the video, a woman is singing. Her expression is very lyrical and intoxicated with music."
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- End teaser video -->
+
+<!-- Method -->
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <h2 class="title is-2 scroll-animate">Method</h2>
+            <div class="gradient-card" style="margin-bottom: 3rem;">
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <img src="content/v3/pipeline.png" alt="Pipeline Overview" style="width: 70%; height: 70%;"/>
+                </div>
+                <div class="item">
+                    <h2 class="content has-text-justified">
+                        <p style="font-size: 1.2em; text-align: center; margin: 1rem 0 0 0;">
+                            Overview of our pipeline.
+                        </p>
+                    </h2>
+                </div>
+            </div>
+                                    <div class="item">
+                        <div class="gradient-card" style="margin-bottom: 3rem;">
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="content/v3/audio_pipeline.png" alt="Audio Pipeline" style="width: 40%; height: 40%;"/>
+                            </div>
+                            <div class="item">
+                                <h2 class="content has-text-justified">
+                                    <p style="font-size: 1.2em; text-align: center; margin: 1rem 0 0 0;">
+                                        The pipeline of the audio injection.
+                                    </p>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                </div>
+            </div>
+            <h3 class="title is-4 scroll-animate" style="margin-top: 30px;">Data Collection</h3>
+            <div class="gradient-card" style="margin: 2rem 0;">
+                <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
+                    <img src="content/pic/sankey_hfm_data.png" alt="Data Collection Pipeline" style="width: 60%; height: auto;"/>
+                </div>
+                <div class="content has-text-justified">
+                    <p style="font-size: 1.1em; margin: 0;">
+                        Our data collection strategy combines automated screening of large-scale datasets (OpenHumanVid, Koala36M) with manual curation of high-quality samples. We focus on videos featuring human characters engaged in specific activities like speaking, singing, and dancing, creating a comprehensive dataset of millions of human-centric video samples.
+                    </p>
+                </div>
+            </div>
+</section>
+<!-- End Method -->
+
+<style>
+    .gifImage:hover {
+        opacity: 0.8;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        transform: scale(1.1);
+    }
+
+    .paused {
+        animation-play-state: paused;
+    }
+
+</style>
+
+
+<head>
+    <title>place gif</title>
+    <style>
+        .gif-container {
+            display: flex;
+        }
+
+        .gif {
+            width: 660px; /* 设置 GIF 的宽度 */
+            height: 400px; /* 设置 GIF 的高度 */
+        }
+    </style>
+</head>
+
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container">
+            <h2 class="title is-3 scroll-animate">Various Generated Videos</h2>
+            <br></br>
+<!--            <h3 class="title is-3">Singing</h3>-->
+            <h2 class="content has-text-justified">
+                <p style="font-size: 1.4em;"></p>
+            </h2>
+            <style>
+                .video-item {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .video-item column {
+                    width: 48%; /* 各占一半，留下一些间隔 */
+                    object-fit: cover; /* 保持图片纵横比 */
+                    margin: 0 10px;
+                }
+
+
+                .item-gif-container {
+                    width: 48%; /* 占据父元素的80%宽度 */
+                    margin: auto; /* 水平方向上创建相同的空白 */
+                }
+            </style>
+
+            <style>
+                .video-container {
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    /*margin: 0 10px;*/
+                    width: 100%;
+                }
+
+                .description {
+                    font-size: 1.2em;
+                    text-align: justify;
+                }
+
+                .content-description {
+                    margin-top: 10px; /* Add some space above the description */
+                }
+            </style>
+            <style>
+                .caption {
+                    margin-top: 8px; /* Space between the video and its caption */
+                }
+            </style>
+
+            <!-- <div style="display: flex; justify-content: center;align-items: center; height: 80px;">
+                <h3 class="title is-4 scroll-animate"> Long Video Dynamic Subject Consistency Maintenance</h3>
+            </div> -->
+
+            <!-- <div class="gradient-card" style="margin: 2rem 0;">
+                <div class="content has-text-justified">
+                    <p style="font-size: 1.2em; margin: 0 0 1rem 0;">
+                        Our model can ensure subject consistency when generating long videos, and maintain smooth and natural dynamics over longer video durations.
+                    </p>
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
+                    <img src="content/pic/long_term2.png" alt="Long Term Consistency" style="width: 60%; height: auto;"/>
+                </div>
+            </div> -->
+
+            <!-- <div class="content has-text-justified">
+                <p style="font-size: 1.2em;">
+                    Our method achieves item identity consistency across consecutive video segments through the introduction of FramePack.
+                </p>
+            </div> -->
+
+            <div class="video-item">
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/banquan/Everybody Wants To Rule the World.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, a woman stood on the deck of a sailing boat and sang loudly. The background was the choppy sea and the thundering sky. It was raining heavily in the sky, the ship swayed, the camera swayed, and the waves splashed everywhere, creating a heroic atmosphere. The woman has long dark hair, part of which is wet by rain. Her expression is serious and firm, her eyes are sharp, and she seems to be staring at the distance or thinking."
+                    </p>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/banquan/乌云中.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, a boy is sitting on a running train. His eyes are blurred. He is singing softly and tapping the beat with his hands. It may be a scene from an MV movie. The train was moving, and the view passed quickly."
+                    </p>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/banquan/i believe i can fly.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, there is a man's selfie perspective. He glides in the sky in a parachute. He sings happily and looks engaged. The scenery passes around him."
+                    </p>
+                </div>
+            </div>            
+
+            <!-- Different garments -->
+            <!-- <div style="display: flex; justify-content: center;align-items: center; height: 80px;">
+                <h3 class="title is-4"> Multi-person</h3>
+            </div>
+            <div class="content has-text-justified">
+                <p style="font-size: 1.2em;">
+                    Our method can generate videos of multi person scenes, covering conversations and singing scenes.
+                </p>
+            </div>
+
+            <div class="video-item">
+
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/multi2.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, two girls are singing. 
+                        They gently sway their bodies and move slowly, 
+                        feeling the rhythm of the music and smiling with expressions"
+                    </p>
+                </div>
+            </div>
+
+            <div class="video-item">
+
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/multi.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, two girls are singing. 
+                        They gently sway their bodies and move slowly, 
+                        feeling the rhythm of the music and smiling with expressions"
+                    </p>
+                </div>
+            </div>
+
+            <div class="video-item">
+
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/5-multi.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, two men are having a conversation"
+                    </p>
+                </div>
+                
+
+            </div>
+            <div class="video-item">
+
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/3-multi2.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, two men are having a conversation"
+                    </p>
+                </div>
+                
+
+            </div> -->
+
+
+
+            <div style="display: flex; justify-content: center;align-items: center; height: 80px;">
+                <h3 class="title is-4"> Cinematic-Grade Audio-Driven</h3>
+            </div>
+
+            <div class="gradient-card" style="margin: 2rem 0;">
+                <div class="content has-text-justified">
+                    <p style="font-size: 1.2em; margin: 0;">
+                        Our method is capable of generating film-quality videos, 
+                        enabling the synthesis of film dialogues and the recreation of narrative scenes.
+                    </p>
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/banquan/[good]crucified_crucified_27150_cfg_4.5_shift_3.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "The video shows a group of nuns singing hymns in the church. The sky emits fluctuating golden light and golden powder falls from the sky. Dressed in traditional black robes and white headscarves, they are neatly arranged in a row with their hands folded in front of their chests. Their expressions are solemn and pious, as if they are conducting some kind of religious ceremony or prayer. The nuns' eyes looked up, showing great concentration and awe, as if they were talking to the gods."
+                    </p>
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/banquan/08_神探狄仁杰_08_神探狄仁杰_1050_cfg_3.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "This video shows a man dressed in ancient costumes criticizing the opposite person seriously. His expression is serious, and there are torches and other characters in the background. With a long beard, dark clothes and a black hat, the man is serious and engaged in some important dialogue or decision-making."
+                    </p>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/03-教父_03-教父_1005_shift_3.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, a man is lying on the sofa with his hands folded on his legs. He is talking with his legs cocked. The lamp flickered. The camera slowly circled, as if it were a movie scene."
+                    </p>
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/10_盗梦空间_10_盗梦空间_1010_shift_3.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, a man in a suit is sitting on the sofa. He leans forward and seems to want to dissuade the opposite person. He speaks to the opposite person with a serious expression of concern."
+                    </p>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/09_王牌特工_09_王牌特工_1100_cfg_4.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "The video shows the scene on the rooftop. A bald man is talking with his hand on another person. His expression is serious and serious, as if he is advising and educating the other person. The wind is very strong, and the lens is slightly shaken and pulled closer. The whole scene looks serious and tense, as if it is a movie scene."
+                    </p>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center;align-items: center; height: 80px;">
+                <h3 class="title is-4"> Enhanced Instruction Following, Motion & Environment Control</h3>
+            </div>
+
+            <div class="gradient-card" style="margin: 2rem 0;">
+                <div class="content has-text-justified">
+                    <p style="font-size: 1.2em; margin: 0;">
+                        Our model can generate character actions and environmental factors in videos according to instructions, thereby creating video content that better fits the theme.
+                    </p>
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/banquan/singing in the rain.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, it is raining heavily. It shows a man who is topless and has clear muscle lines, showing good physical fitness and strength. The rain wet his whole body. His arms were open and he was singing happily. His expression was engaged and his hands were slowly extended. The man's head is slightly raised, his eyes are upward, and his mouth is slightly open. His expression was full of surprise and expectation, giving a feeling that something important was about to happen."
+                    </p>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="column">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/单人-说话-动作控制-音频align.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, a man is holding an apple and talking, he takes a bite of the apple."
+                    </p>
+                </div>
+            </div>
+            
+
+            <!-- 效果对比section已注释掉
+            <div style="display: flex; justify-content: center;align-items: center; height: 80px;">
+                <h3 class="title is-4"> Effect Comparison</h3>
+            </div>
+
+            <div class="content has-text-justified">
+                <p style="font-size: 1.2em;">
+                    Compare our generation effects with those of OmniHuman, HunyuanVideo-Avatar and FantasyTalking, the results are as follows
+                </p>
+            </div>
+            <div class="columns is-multiline is-centered">
+
+                <div class="column is-half">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/compares/7.mp4" type="video/mp4">
+                    </video>
+                    <!-- <p class="caption">
+                        Prompt: "In the video, a woman is singing. Her expression is very lyrical and intoxicated with music."
+                    </p> -->
+                <!-- </div> -->
+    
+                <!-- <div class="column is-half">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/compares/8.mp4" type="video/mp4">
+                    </video>
+                </div> -->
+            <!-- </div> -->
+
+            <!-- <div class="columns is-multiline is-centered"> -->
+
+                <!-- <div class="column is-half"> -->
+                    <!-- <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/compares/1.mp4" type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        Prompt: "In the video, a woman is singing. Her expression is very lyrical and intoxicated with music."
+                    </p> -->
+                <!-- </div> -->
+    
+                <!-- <div class="column is-half">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/compares/2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div> -->
+
+            <!-- <div class="columns is-multiline is-centered">
+
+                <div class="column is-half">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/compares/3.mp4" type="video/mp4">
+                    </video> -->
+                    <!-- <p class="caption">
+                        Prompt: "In the video, a woman is singing. Her expression is very lyrical and intoxicated with music."
+                    </p> -->
+                <!-- </div>
+    
+                <div class="column is-half">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/compares/4.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div> -->
+
+            <!-- <div class="columns is-multiline is-centered">
+
+                <div class="column is-half">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/compares/5.mp4" type="video/mp4">
+                    </video> -->
+                    <!-- <p class="caption">
+                        Prompt: "In the video, a woman is singing. Her expression is very lyrical and intoxicated with music."
+                    </p> -->
+                <!-- </div> -->
+    
+                <!-- <div class="column is-half">
+                    <video class="video-player" poster="" id="tree2" controls>
+                        <source src="content/v3/video/compares/6.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div> -->
+
+            <!-- <br></br> -->
+            <!-- --> 
+        </div>
+    </div>
+</section>
+
+<br></br>
+</div>
+</div>
+</section>
+
+<section class="section hero">
+<div class="container is-max-desktop">
+<div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+        <h2 class="title is-3 scroll-animate">Quantitative Comparison</h2>
+        <div class="gradient-card" style="margin: 2rem 0;">
+            <div class="content has-text-justified">
+                <p style="font-size: 1.2em; margin: 0;">
+                    We conduct comprehensive quantitative comparisons with state-of-the-art methods across multiple evaluation metrics.
+                </p>
+            </div>
+        </div>
+        
+        <div class="table-container" style="margin-top: 30px; overflow-x: auto;">
+            <div class="gradient-card" style="padding: 2rem;">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>FID↓</th>
+                        <th>FVD↓</th>
+                        <th>SSIM↑</th>
+                        <th>PSNR↑</th>
+                        <th>Sync-C↑</th>
+                        <th>EFID↓</th>
+                        <th>HKC↑</th>
+                        <th>HKV↑</th>
+                        <th>CSIM↑</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>EchoMimicV2</td>
+                        <td>33.42</td>
+                        <td>217.71</td>
+                        <td>0.662</td>
+                        <td>18.17</td>
+                        <td>4.44</td>
+                        <td>1.052</td>
+                        <td>0.425</td>
+                        <td>0.150</td>
+                        <td>0.519</td>
+                    </tr>
+                    <tr>
+                        <td>MimicMotion</td>
+                        <td>25.38</td>
+                        <td>248.95</td>
+                        <td>0.585</td>
+                        <td>17.15</td>
+                        <td>2.68</td>
+                        <td>0.617</td>
+                        <td>0.356</td>
+                        <td>0.169</td>
+                        <td>0.608</td>
+                    </tr>
+                    <tr>
+                        <td>EMO2</td>
+                        <td>27.28</td>
+                        <td><strong>129.41</strong></td>
+                        <td>0.662</td>
+                        <td>17.75</td>
+                        <td>4.58</td>
+                        <td><strong>0.218</strong></td>
+                        <td><strong>0.553</strong></td>
+                        <td><strong>0.198</strong></td>
+                        <td>0.650</td>
+                    </tr>
+                    <tr>
+                        <td>FantasyTalking</td>
+                        <td>22.60</td>
+                        <td>178.12</td>
+                        <td>0.703</td>
+                        <td>19.63</td>
+                        <td>3.00</td>
+                        <td>0.366</td>
+                        <td>0.281</td>
+                        <td>0.087</td>
+                        <td>0.626</td>
+                    </tr>
+                    <tr>
+                        <td>Hunyuan-Avatar</td>
+                        <td>18.07</td>
+                        <td>145.77</td>
+                        <td>0.670</td>
+                        <td>18.16</td>
+                        <td><strong>4.71</strong></td>
+                        <td>0.7082</td>
+                        <td>0.379</td>
+                        <td>0.145</td>
+                        <td>0.583</td>
+                    </tr>
+                    <!-- <tr style="background-color: #f0f8ff;">
+                        <td><strong>Ours 1.5b</strong></td>
+                        <td>17.07</td>
+                        <td>165.40</td>
+                        <td>0.721</td>
+                        <td>20.32</td>
+                        <td>4.46</td>
+                        <td>0.294</td>
+                        <td>0.334</td>
+                        <td>0.085</td>
+                        <td>0.649</td>
+                    </tr> -->
+                    <tr style="background-color: #e6f3ff;">
+                        <td><strong>Wan2.2-S2V-14B</strong></td>
+                        <td><strong>15.66</strong></td>
+                        <td>129.57</td>
+                        <td><strong>0.734</strong></td>
+                        <td><strong>20.49</strong></td>
+                        <td>4.51</td>
+                        <td>0.283</td>
+                        <td>0.435</td>
+                        <td>0.142</td>
+                        <td><strong>0.677</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        
+        <div class="gradient-card" style="margin-top: 20px;">
+            <div class="content has-text-justified">
+                <p style="font-size: 1.1em; text-align: center; margin: 0;">
+                    <strong>Table 1:</strong> According to actual measurement data, Wan2.2-S2V achieved the best or near-best performance among similar models in core metrics such as FID (video quality), EFID (expression authenticity), and CSIM (identity consistency).
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Citation Section -->
+<section class="section hero">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3 scroll-animate">Citation</h2>
+                <div class="gradient-card" style="margin: 2rem 0;">
+                    <div class="content has-text-justified">
+                        <p style="font-size: 1.1em; margin: 0; font-family: 'Courier New', monospace; background: var(--card-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                            @article{wan2025s2v,<br>
+                            &nbsp;&nbsp;title={Wan-S2V:Audio-Driven Cinematic Video Generation},<br>
+                            &nbsp;&nbsp;author={Li Hu, Siqi Hu, Mingyang Huang, Chaonan Ji, Dechao Meng, Jinwei Qi, Penchong Qiao, Zhen Shen, Yafei Song, Ke Sun, Linrui Tian, Guangyuan Wang, Qi Wang, Zhongjian Wang, Jiayu Xiao, Sheng Xu, Bang Zhang, Peng Zhang, Xindi Zhang, Zhe Zhang, Jingren Zhou, Lian Zhuo},<br>
+                            &nbsp;&nbsp;journal={arXiv preprint arXiv:2401.XXXXX},<br>
+                            &nbsp;&nbsp;year={2025}<br>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="static/js/script.js"></script>
+<script>
+    // 页面进度条功能
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.offsetHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.getElementById('progressBar').style.width = scrollPercent + '%';
+        
+        // 滚动动画
+        const scrollElements = document.querySelectorAll('.scroll-animate');
+        scrollElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('animate');
+            }
+        });
+    });
+
+    // 获取所有视频元素
+    var videos = document.querySelectorAll('video');
+
+    // 为每个视频添加播放事件监听器
+    videos.forEach(function (video) {
+        video.addEventListener('play', function () {
+            // 当任何一个视频开始播放时，暂停其他所有视频
+            videos.forEach(function (otherVideo) {
+                if (otherVideo !== video) {
+                    otherVideo.pause();
+                }
+            });
+        }, false);
+    });
+</script>
+
+<script>
+    new BeforeAfter({
+        id: '#example1'
+    });
+    new BeforeAfter({
+        id: '#example2'
+    });
+    new BeforeAfter({
+        id: '#example3'
+    });
+    new BeforeAfter({
+        id: '#example4'
+    });
+    new BeforeAfter({
+        id: '#example6'
+    });
+    new BeforeAfter({
+        id: '#example7'
+    });
+
+</script>
+
+<script>
+    var gifImage = document.getElementById('gifImage');
+    var isPaused = false;
+
+    gifImage.addEventListener('mouseenter', function () {
+        gifImage.src = gifImage.src;
+        isPaused = true;
+    });
+
+    gifImage.addEventListener('mouseleave', function () {
+        if (isPaused) {
+            gifImage.src = gifImage.src;
+            isPaused = false;
+        }
+    });
+</script>
+
+<script>
+    bulmaCarousel.attach('#results-carousel11', {
+        slidesToScroll: 1,
+        slidesToShow: 2,
+        infinite: true,
+        autoplay: false,
+    });
+    bulmaCarousel.attach('#results-carousel22', {
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        infinite: true,
+        autoplay: false,
+    });
+    bulmaCarousel.attach('#results-carousel44', {
+        slidesToScroll: 1,
+        slidesToShow: 2,
+        infinite: false,
+        autoplay: false,
+    });
+</script>
+
+<script>
+    document.getElementById('gifImage3').src = 'content/gifs/Item.gif';
+    document.getElementById('gifImage1').src = 'content/gifs/s1.gif';
+    document.getElementById('gifImage2').src = 'content/gifs/s2.gif';
+
+    // 图片资源路径
+    const images = [
+        'content/teaser/t3.gif',
+        'content/teaser/t4.gif',
+        'content/teaser/t1.gif',
+        'content/teaser/t2.gif'
+    ];
+
+    // 获取要插入图片的div
+    const group1 = document.getElementById('group1');
+    const group2 = document.getElementById('group2');
+
+    // 创建并插入前两张图片
+    for (let i = 0; i < 2; i++) {
+        const img = document.createElement('img');
+        img.src = images[i];
+        img.loading = 'lazy';
+        img.alt = '图片' + (i + 1);
+        group1.appendChild(img);
+    }
+
+    // 创建并插入后两张图片
+    for (let i = 2; i < images.length; i++) {
+        const img = document.createElement('img');
+        img.src = images[i];
+        img.loading = 'lazy';
+        img.alt = '图片' + (i + 1);
+        group2.appendChild(img);
+    }
+
+</script>
+
+<!-- Statcounter tracking code -->
+
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+<!-- End of Statcounter Code -->
+<!--<script type="text/javascript">-->
+<!--    var sc_project = 12948235;-->
+<!--    var sc_invisible = 1;-->
+<!--    var sc_security = "8cca28b8";-->
+<!--</script>-->
+<!--<script type="text/javascript"-->
+<!--        src="https://www.statcounter.com/counter/counter.js" async></script>-->
+<!--<noscript>-->
+<!--    <div class="statcounter"><a title="Web Analytics"-->
+<!--                                href="https://statcounter.com/" target="_blank"><img class="statcounter"-->
+<!--                                                                                     src="https://c.statcounter.com/12948235/0/8cca28b8/1/"-->
+<!--                                                                                     alt="Web Analytics"-->
+<!--                                                                                     referrerPolicy="no-referrer-when-downgrade"></a>-->
+<!--    </div>-->
+<!--</noscript>-->
+<!-- Default Statcounter code for emo3
+https://humanaigc.github.io/emote-portrait-alive-2/ -->
+<!-- Default Statcounter code for vita-actor
+https://humanaigc.github.io/wan-s2v-page/ -->
+<script type="text/javascript">
+    var sc_project=13143424; 
+    var sc_invisible=1; 
+    var sc_security="11324133"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics"
+    href="https://statcounter.com/" target="_blank"><img
+    class="statcounter"
+    src="https://c.statcounter.com/13143424/0/11324133/1/"
+    alt="Web Analytics"
+    referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+</body>
+
+
+</html>
